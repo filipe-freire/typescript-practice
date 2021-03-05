@@ -17,3 +17,11 @@ if (typeof userInput === 'string') {
 // we could use union types instead,
 // if we know the types of values we
 // expect the variable to point to!
+
+// never type, makes clear that the function is intended to never
+// return anything. It breaks the script!
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+
+generateError('An error has occured', 500);
