@@ -3,7 +3,13 @@
 type Combinable = number | string;
 type ConversionOptions = 'as-number' | 'as-text';
 
-function combine(input1: Combinable, input2: Combinable, resultConversion: ConversionOptions) {
+interface CombineParams {
+  input1: Combinable;
+  input2: Combinable;
+  resultConversion: ConversionOptions;
+}
+
+function combine({input1, input2, resultConversion}: CombineParams) {
   // although an addition of number and string is possible, typescript
   // doesn't know those are our chose union types, so it throws an error
   let result;
@@ -23,5 +29,5 @@ function combine(input1: Combinable, input2: Combinable, resultConversion: Conve
   return result;
 }
 
-const combinedAges = combine(30, 26, 'as-number');
+const combinedAges = combine({input1 : 30, input2 : 26, resultConversion : 'as-number'});
 console.log('🚀 ~ file: app.ts ~ line 28 ~ combinedAges', combinedAges);
